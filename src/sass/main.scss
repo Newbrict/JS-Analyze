@@ -1,0 +1,30 @@
+$font-stack:    Helvetica, sans-serif;
+$primary-color: #333;
+$editor-width: 700px;
+$editor-height: 450px;
+$editor-margin: 10px;
+
+body {
+  font: 100% $font-stack;
+  color: $primary-color;
+}
+
+#editor{
+	position: absolute;
+	height: $editor-height;
+	width: $editor-width;
+	margin: $editor-margin;
+}
+
+#mainWrapper{
+	background: #AAA;
+	border-color: #678d00;
+	border-width: 1px;
+	border-radius: 5px;
+	border-style: solid;
+	width: $editor-width + 2*$editor-margin;
+	height: $editor-height + 2*$editor-margin;
+	margin: 50px auto 50px;
+	padding: 0;
+}
+

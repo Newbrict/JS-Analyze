@@ -1,0 +1,16 @@
+{
+  "name": "JS-Analyze",
+  "description": "Javascript code analyzer",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "ace-builds": "~1.1.7",
+    "bootstrap": "~3.2.0",
+    "esprima": "~1.2.2"
+  }
+}

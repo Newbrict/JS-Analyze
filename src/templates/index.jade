@@ -1,0 +1,17 @@
+doctype html
+html(lang="en")
+	link(rel='stylesheet', href='css/main.css')
+	link(rel='stylesheet', href='lib/bootstrap/dist/css/bootstrap.css')
+	body
+		div#mainWrapper.container
+			div#editor
+		script(src='lib/jquery/dist/jquery.min.js')
+		script(src='lib/bootstrap/dist/js/bootstrap.min.js')
+		script(src='lib/ace-builds/src/ace.js')
+		script(src='lib/esprima/esprima.js')
+		script(src='js/app.js')
+		script(type='text/javascript').
+			var editor = ace.edit("editor");
+			editor.setTheme("ace/theme/twilight");
+			editor.getSession().setMode("ace/mode/javascript");
+
