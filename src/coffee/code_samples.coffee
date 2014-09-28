@@ -27,3 +27,38 @@ codeSample["nestedIfs"] =
 		}
 	}
 """
+
+codeSample["sidebyside"] =
+"""
+	for (var i = 1; i <= 2; i++) {
+		if(true) {
+			console.log(i);
+		}
+		while(false) {
+			console.log("can't see this");
+		}
+	}
+"""
+
+# All actual trials will go here
+@userTrial = []
+
+userTrial.push
+	code: "// Create a program with a while loop"
+	whitelist: '{ "while":{} }'
+	blacklist: ''
+
+userTrial.push
+	code: "// Create a program with a for loop containing an if statement"
+	whitelist: '{ "for":{"if":{}} }'
+	blacklist: ''
+
+userTrial.push
+	code: "// Create a program with a for loop, and NO while loops!"
+	whitelist: '{ "for":{} }'
+	blacklist: '{ "while":{} }'
+
+userTrial.push
+	code: "// Create a program with an if statement containing a while and for loop"
+	whitelist: '{ "if":{"while":{},"for":{}} }'
+	blacklist: ''

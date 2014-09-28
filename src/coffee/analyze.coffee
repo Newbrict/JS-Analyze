@@ -14,6 +14,8 @@ class @ParseArray
 
 	# Add a member to the parse object
 	add: (json) ->
+		if json == ''
+			return
 		@parseElements.push JSON.parse json
 
 	# To view the current parse object, just for debugging, really.

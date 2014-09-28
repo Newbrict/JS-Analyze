@@ -1,8 +1,15 @@
 $font-stack:    Helvetica, sans-serif;
 $primary-color: #333;
+
+$main-margin: 10px;
+
 $editor-width: 700px;
 $editor-height: 450px;
-$editor-margin: 10px;
+
+$editor-wrapper-width:  $editor-width  + 2*$main-margin;
+$editor-wrapper-height: $editor-height + 2*$main-margin;
+
+$info-wrapper-width: 200px;
 
 body {
   font: 100% $font-stack;
@@ -10,21 +17,37 @@ body {
 }
 
 #editor{
-	position: absolute;
+	width: auto;
 	height: $editor-height;
-	width: $editor-width;
-	margin: $editor-margin;
+	margin: $main-margin;
+}
+
+#codeInfo{
+	width: auto;
+	height: 50px;
+	margin: $main-margin;
+}
+
+#editorWrapper{
+	width: auto;
+	padding: 0;
+}
+
+#infoWrapper{
+	width: auto;
+	padding: 0;
 }
 
 #mainWrapper{
+	max-width: 1000px;
+	height: auto;
+	margin: 50px auto 50px;
+}
+
+.container{
 	background: #AAA;
 	border-color: #678d00;
 	border-width: 1px;
 	border-radius: 5px;
 	border-style: solid;
-	width: $editor-width + 2*$editor-margin;
-	height: $editor-height + 2*$editor-margin;
-	margin: 50px auto 50px;
-	padding: 0;
 }
-

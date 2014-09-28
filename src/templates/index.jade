@@ -3,12 +3,17 @@ html(lang="en")
 	link(rel='stylesheet', href='css/main.css')
 	link(rel='stylesheet', href='lib/bootstrap/dist/css/bootstrap.css')
 	body
-		div#mainWrapper.container
-			div#editor
+		div#mainWrapper.row
+			div.col-xs-3
+				div#infoWrapper.container
+					div#codeInfo.alert.alert-info.
+						Try to complete the task
+			div.col-xs-9
+				div#editorWrapper.container
+					div#editor
 
 	script(src='lib/jquery/dist/jquery.min.js')
 	script(src='lib/bootstrap/dist/js/bootstrap.min.js')
 	script(src='lib/ace-builds/src/ace.js')
 	script(src='lib/esprima/esprima.js')
 	script(src='js/main.js')
-	script(src='js/analyze.js')

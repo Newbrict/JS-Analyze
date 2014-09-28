@@ -9,9 +9,12 @@ module.exports = (grunt) ->
 					join: false
 					sourceMap: true
 				files: [
-					'build/js/main.js': 'src/coffee/main.coffee',
-					'build/js/analyze.js': ['src/coffee/code_samples.coffee','src/coffee/analyze/*.coffee'],
-					'build/test/test.js': 'src/test/*.coffee'
+					'build/js/main.js': 'src/coffee/**/*.coffee',
+					'build/test/test.js': [ 'src/test/*.coffee'
+																, 'src/coffee/code_samples.coffee'
+																, 'src/coffee/validator.coffee'
+																, 'src/coffee/analyze.coffee'
+																]
 				]
 
 		jade:

@@ -10,3 +10,8 @@ describe "Parse Array", ->
 		# Add another element
 		@pa.add '{ "while":{} }'
 		expect(@pa.get()).toBe('[{"if":{}},{"while":{}}]')
+
+	it "Can handle empty additions", ->
+		expect(@pa.get()).toBe('[]')
+		@pa.add ''
+		expect(@pa.get()).toBe('[]')

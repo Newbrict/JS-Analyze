@@ -44,3 +44,15 @@ describe "Analyzer", ->
 		expect(@analyzer.verify( syntax )).toBe true
 		@analyzer.blacklist.add '{ "for":{"if":{}} }'
 		expect(@analyzer.verify( syntax )).toBe false
+
+	it "Conflicting list options", ->
+		syntax = esprima.parse codeSample["fizzbuzz"]
+		@analyzer.whitelist.add '{ "if":{} }'
+		expect(@analyzer.verify( syntax )).toBe true
+		@analyzer.blacklist.add '{ "if":{} }'
+		expect(@analyzer.verify( syntax )).toBe false
+
+	it "Can handle side by side lists", ->
+		syntax = esprima.parse codeSample["sidebyside"]
+		@analyzer.whitelist.add '{ "for":{"if":{},"while":{}} }'
+		expect(@analyzer.verify( syntax )).toBe true

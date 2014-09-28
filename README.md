@@ -1,7 +1,7 @@
 JS-Analyze
 =========
 
-Javascript code analyzer project
+Javascript code analyzer project for Khan Academy
 
 Install
 --

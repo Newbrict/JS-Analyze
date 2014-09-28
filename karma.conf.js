@@ -8,7 +8,6 @@ module.exports = function(config) {
     files: [
 			'build/lib/jquery/dist/jquery.min.js',
 			'build/lib/esprima/esprima.js',
-      'build/js/analyze.js',
 			'build/test/*.js'
     ],
     exclude: [],
