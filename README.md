@@ -49,6 +49,13 @@ analyzer.whitelist.add '{ "if":{"if":{"if":{}}} }'
 analyzer.whitelist.add '{ "while":{"for":{}} }'
 analyzer.blacklist.add '{ "if":{"while":{}} }'
 ```
+Once you have your lists set up, check them against an esprima AST
+```coffeescript
+editor = ace.edit "editor"
+ast = esprima.parse editor.getValue()
+# Make sure the AST is valid...
+analyzer.verify ast
+```
 
 Please see the unit tests for more examples.
 
