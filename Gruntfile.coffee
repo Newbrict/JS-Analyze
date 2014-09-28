@@ -2,13 +2,18 @@ module.exports = (grunt) ->
 	gruntConfig =
 		pkg:
 			grunt.file.readJSON 'package.json'
+
 		coffee:
 			app:
 				options:
-					join: true
+					join: false
 					sourceMap: true
-				files:
-					'build/js/app.js': 'src/coffee/*.coffee'
+				files: [
+					'build/js/main.js': 'src/coffee/main.coffee',
+					'build/js/analyze.js': ['src/coffee/code_samples.coffee','src/coffee/analyze/*.coffee'],
+					'build/test/test.js': 'src/test/*.coffee'
+				]
+
 		jade:
 			compile:
 				options:
@@ -34,23 +39,31 @@ module.exports = (grunt) ->
 					'value': 'warn'
 				'max_line_length':
 					'level': 'ignore'
+		karma:
+			unit:
+				configFile: "karma.conf.js"
+				singleRun: true
 
 		watch:
 			coffeelint:
 				files: 'src/coffee/*.coffee'
 				tasks: 'coffeelint'
 			coffee:
-				files: 'src/coffee/*.coffee'
-				tasks: 'coffee'
+				files: 'src/coffee/**/*.coffee'
+				tasks: ['coffee', 'test']
 			jade:
 				files: 'src/templates/*.jade'
 				tasks: 'jade'
 			sass:
 				files: 'src/sass/*.scss'
 				tasks: 'sass'
+			karma:
+				files: 'src/test/*.coffee'
+				tasks: ['coffee', 'test']
 
 	# Default task
 	grunt.registerTask 'default', ['coffeelint', 'coffee', 'jade', 'sass']
+	grunt.registerTask 'test', 'karma'
 
 	grunt.initConfig gruntConfig
 	grunt.loadNpmTasks 'grunt-contrib-coffee'
@@ -58,3 +71,4 @@ module.exports = (grunt) ->
 	grunt.loadNpmTasks 'grunt-contrib-sass'
 	grunt.loadNpmTasks 'grunt-contrib-watch'
 	grunt.loadNpmTasks 'grunt-coffeelint'
+	grunt.loadNpmTasks 'grunt-karma'
