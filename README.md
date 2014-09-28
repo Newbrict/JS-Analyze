@@ -10,7 +10,8 @@ npm install
 bower install
 grunt
 ```
-after running those you can open up build/index.html and try it out.
+after running those you can open up build/index.html and try it out. REFRESH the
+page for different trials!!
 
 Why Esprima?
 ---
