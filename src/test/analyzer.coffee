@@ -55,4 +55,19 @@ describe "Analyzer", ->
 	it "Can handle side by side lists", ->
 		syntax = esprima.parse codeSample["sidebyside"]
 		@analyzer.whitelist.add '{ "for":{"if":{},"while":{}} }'
+		@analyzer.whitelist.add '{ "for":{"while":{},"if":{}} }'
 		expect(@analyzer.verify( syntax )).toBe true
+
+	it "Properly requires side by side lists IF CASE", ->
+		syntax = esprima.parse codeSample["sidebysideIF"]
+		@analyzer.whitelist.add '{ "for":{"while":{},"if":{}} }'
+		expect(@analyzer.verify( syntax )).toBe false
+		@analyzer.whitelist.add '{ "for":{"if":{},"while":{}} }'
+		expect(@analyzer.verify( syntax )).toBe false
+
+	it "Properly requires side by side lists WHILE CASE", ->
+		syntax = esprima.parse codeSample["sidebysideWHILE"]
+		@analyzer.whitelist.add '{ "for":{"while":{},"if":{}} }'
+		expect(@analyzer.verify( syntax )).toBe false
+		@analyzer.whitelist.add '{ "for":{"if":{},"while":{}} }'
+		expect(@analyzer.verify( syntax )).toBe false

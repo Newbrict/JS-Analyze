@@ -40,6 +40,24 @@ codeSample["sidebyside"] =
 	}
 """
 
+codeSample["sidebysideIF"] =
+"""
+	for (var i = 1; i <= 2; i++) {
+		if(true) {
+			console.log(i);
+		}
+	}
+"""
+
+codeSample["sidebysideWHILE"] =
+"""
+	for (var i = 1; i <= 2; i++) {
+		while(true) {
+			console.log(i);
+		}
+	}
+"""
+
 # All actual trials will go here
 @userTrial = []
 

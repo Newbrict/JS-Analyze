@@ -77,7 +77,7 @@ class @Analyzer
 			if 'type' in Object.keys(root) and root['type'] == item
 				for child in @getSubObjects root
 					ret.push child
-				
+
 		@traverse syntax, cb
 		return ret
 
@@ -99,6 +99,7 @@ class @Analyzer
 
 		# Iterate over all our keys in the current root
 		# This might be 'if' or 'while', etc
+		trueRoots = 0
 		for curKey in Object.keys(root)
 			# Convert this to the Esprima token identifier
 			slang = slangToEsprima(curKey)
@@ -108,9 +109,11 @@ class @Analyzer
 			allLeads = []
 			for curLead in leads
 				allLeads.push @find slang, curLead
-				
+
 			# Recurse further into the object
-			return @contains( root[curKey], allLeads  )
+			if @contains( root[curKey], allLeads  )
+				trueRoots = trueRoots + 1
+		return trueRoots == Object.keys(root).length
 
 	# Verify the Whitelist and Blacklist on some AST
 	# This should be called explicitly
